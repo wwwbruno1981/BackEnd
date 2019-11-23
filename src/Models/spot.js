@@ -6,8 +6,16 @@ price : Number,
 techs : [String],
 user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user"
+    ref: "User"
 }
+}, {
+    toJSON: {
+      virtual: true,
+    },
 });
+
+spotSchema.virtual('thumbnail_url').get(function() {
+    return `http://localhost:3333/files/${this.thumbnail}`
+})
 
 module.exports = mongoose.model('spot', spotSchema);

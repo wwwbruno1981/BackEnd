@@ -1,4 +1,4 @@
-const booking = require('../Models/booking')
+const Booking = require('../Models/booking')
 
 module.exports = {
  async store(req, res) {
@@ -6,7 +6,7 @@ module.exports = {
      const { spot_id } = req.params;
      const { date } = req.body;
 
-     const booking = await booking.create({
+     const booking = await Booking.create({
       user : user_id,
       spot : spot_id,
       date,
